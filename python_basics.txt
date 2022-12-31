@@ -1,0 +1,59 @@
+General notes:
+Always use a context manager when opening files. This will prevent memory leaks.
+To do this just use the keyword with in front of open. ex...
+with open('test.txt', 'r') as f:
+
+read contents:
+with open('test.txt', 'r') as f:
+    f_content = f.read()
+
+read contents with character limit:
+with open('test.txt', 'r') as f:
+    f_content = f.read(100)     // this will only read the first 100 characters.
+
+readline()    // will read only the first line of file.
+if you pass in end=""  it will not include an empty string at the end of file. ex...
+with open('test.txt', 'r') as f:
+    f_content = f.readline()
+    print(f_content, end="")
+
+iterate thru readline()...
+with open('test.txt', 'r') as f:
+    f_content = f.readline()
+    for line in f:
+        print(line, end="")
+// The reason you would do this insead of just read content, is a memory issue. if
+the file you reading is big, then iterating thru it wont cause a memory issue.
+
+readlines():  // will give you a python list of all the lines in a file.
+
+.tell()  // will tell you your current postion in the file.
+
+.seek()   // takes an argument to tell where to start in file.
+
+pass  // you can always put in a pass if you dont want to do anything with a file. ex..
+with open('test.txt', 'w') as f:
+    pass
+
+
+writing to a file:
+with open('test2.txt', 'w') as f:
+    f.write('test')     // This will create a new file and write test in it.
+
+coping file:
+with open('notes.txt', 'r') as rf:
+    with open('test.txt', 'w') as wf:
+        for line in rf:
+            wf.write(line)
+
+copy image:
+// to copy an image you need to read and write in bytes.
+with open('pic.png', 'rb') as rf:   // note rb is read bites 
+    with open('copy.png', 'wb') as wf:
+        chunk_size = 4000
+        rf_chunk = rf.read(chunk_size)
+        while len(rf_chunk) > 0:
+            wf.write(rf_chunk)
+            rf_chunk = rf.read(chunk_size)
+            
+// because file is so large, you need to read in chuncks.
