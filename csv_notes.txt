@@ -1,0 +1,53 @@
+import csv  // will go at the top of .py file.
+
+read csv file:
+with open('one.csv', 'r') as csv_f:
+    reader_guy = csv.reader(csv_f)
+    for line in reader_guy:
+        print(line)
+
+next():     // will skip over first line of csv file.
+with open('one.csv', 'r') as csv_f:
+    reader_guy = csv.reader(csv_f)
+    next(reader_guy)
+    for line in reader_guy:
+        print(line)
+
+write file:
+ith open('one.csv', 'r') as csv_f:
+    reader_guy = csv.reader(csv_f)
+    with open('new.csv', 'w') as new_file:
+        writer_guy = csv.writer(new_file, delimiter='-')
+        for line in reader_guy:
+            writer_guy.writerow(line)
+
+// the delimiter will change the , to a -
+// delimter: '\t' is a tab
+// if your csv file is seperated by something other than a comma, you can pass the delimiter
+    into the csv.reader.
+
+
+dictreader:
+with open('one.csv', 'r') as f:
+    reader_guy = csv.DictReader(f)
+    for line in reader_guy:
+        print(line)
+
+// creates a dictionary of csv file.
+
+dictwriter:
+with open('one.csv', 'r') as csv_f:
+    reader_guy = csv.DictReader(csv_f)
+
+    with open('new.csv', 'w', newline="") as new_file:
+        fieldnames = ['first', 'second']
+        writer_guy = csv.DictWriter(
+            new_file, fieldnames=fieldnames)
+        writer_guy.writeheader()
+
+        for line in reader_guy:
+            writer_guy.writerow(line)
+
+
+// writer_guy.writeheader() will include top line of csv file.
+// newline="", was added so it wouldnt write a blank line every iteration.
