@@ -23,3 +23,24 @@ print(len(dfs))
 
 print(dfs[0])
 // this will print table
+
+convert pdf to csv...
+pdf_path = "sample.pdf"
+# data frames
+dfs = tabula.read_pdf(pdf_path, pages="1")
+print(dfs[0])
+
+dfs[0].to_csv("first.csv")
+
+or ...
+pdf_path = "sample.pdf"
+
+# args: path, created file name, file type, page to inspect
+tabula.convert_into(pdf_path, "first_csv_table", output_format="csv", pages="1")
+
+multiple tables on same page...
+pdf_path = "sample.pdf"
+
+dfs = tabula.read_pdf(pdf_path, pages="2")
+for i in range(len(dfs)):
+    dfs[i].to_csv(f"page_two_table{i}.csv")
