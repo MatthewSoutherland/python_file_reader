@@ -1,6 +1,8 @@
 import tabula
 
-pdf_path = "sample.pdf"
 
-# args: path, created file name, file type, page to inspect
-tabula.convert_into(pdf_path, "first_csv_table", output_format="csv", pages="1")
+# pip install tabula-py
+import tabula
+
+pdf_path = "rfpt.pdf"
+tabula.convert_into(pdf_path, "rosenport.csv", output_format="csv", pages="1")
