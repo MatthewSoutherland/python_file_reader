@@ -14,7 +14,7 @@ with open('one.csv', 'r') as csv_f:
         print(line)
 
 write file:
-ith open('one.csv', 'r') as csv_f:
+with open('one.csv', 'r') as csv_f:
     reader_guy = csv.reader(csv_f)
     with open('new.csv', 'w') as new_file:
         writer_guy = csv.writer(new_file, delimiter='-')

@@ -6,3 +6,4 @@ venv
 copy.txt
 page_two_table0.csv
 page_two_table1.csv
+tests/
