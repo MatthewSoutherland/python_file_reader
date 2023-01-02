@@ -6,3 +6,20 @@ from pdfminer.high_level import extract_pages, extract_text
 
 text = extract_text("rfpt.pdf")
 print(text)
+
+create virtual environment.
+pip install tabula-py
+
+extract single table from pdf file...
+
+pdf_path = "sample.pdf"
+#data frames
+dfs = tabula.read_pdf(pdf_path, pages='1')
+
+// this code will look for tables in the pdf file and append them into dataframes.
+
+print(len(dfs))
+// this will show you the length of array, meaning number of tables in dataset.
+
+print(dfs[0])
+// this will print table
