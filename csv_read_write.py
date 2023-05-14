@@ -1,6 +1,5 @@
 import csv
 
-# import csv
 with open("one.csv", "r") as f:
     file_reader = csv.DictReader(f)
 
