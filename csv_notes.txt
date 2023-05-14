@@ -48,6 +48,5 @@ with open('one.csv', 'r') as csv_f:
         for line in reader_guy:
             writer_guy.writerow(line)
 
-
 // writer_guy.writeheader() will include top line of csv file.
 // newline="", was added so it wouldnt write a blank line every iteration.
